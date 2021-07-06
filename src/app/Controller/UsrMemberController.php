@@ -57,8 +57,9 @@ class UsrMemberController extends Controller
         if (empty($member)) {
             jsHistoryBackExit("일치하는 회원이 존재하지 않습니다.");
         }
-
-        $_SESSION['loginedMemberId'] = $member['id'];
+        if($member != null){
+            $_SESSION['loginedMemberId'] = $member['id'];
+        }
 
         jsLocationReplaceExit("../article/list", "{$member['nickname']}님 환영합니다.");
     }

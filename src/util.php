@@ -95,10 +95,12 @@ function DB__getRow(DB__SeqSql $sql): ?array
 {
     $rows = DB__getRows($sql);
 
-    if (is_array($rows[0])) {
-        return $rows[0];
+    if($rows != null){
+        if (is_array($rows[0])) {
+            return $rows[0];
+        }
     }
-
+    
     return null;
 }
 

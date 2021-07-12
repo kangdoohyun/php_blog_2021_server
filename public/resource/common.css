@@ -57,7 +57,7 @@ html > body, html > body .tui-editor-contents {
 .section-articles > div > div > div > div:last-of-type+hr{
   display: none;
 }
-
+/* 모바일 사이드 메뉴 */
 .mobile-side-menu__bg{
   background-color: rgba(0, 0, 0, 0.5);
   visibility: hidden;
@@ -95,6 +95,12 @@ html > body, html > body .tui-editor-contents {
 .mobile-side-menu__board-box > li.active{
     color: #F3F4F6;
     border-color: #F3F4F6;
+}
+@media (max-width: 767px) {
+    html.mobile-side-bar-actived,
+    html.mobile-side-bar-actived > body{
+      overflow: hidden;
+    }
 }
 /* PC탑바 메뉴박스 */
 

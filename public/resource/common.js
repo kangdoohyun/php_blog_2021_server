@@ -1,9 +1,14 @@
 function MobileSideBarBtn_init(){
     $('.mobile-top-bar__side-menu-open-btn').click(function(){
         $('.mobile-side-menu').addClass('active');
+        $('html').addClass('mobile-side-bar-actived');
     });
-    $('.mobile-side-menu__close-btn').click(function(){
+    $('.mobile-side-menu__close-btn, .mobile-side-menu__bg').click(function(){
         $('.mobile-side-menu').removeClass('active');
+        $('html').removeClass('mobile-side-bar-actived');
+    });
+    $('.mobile-side-menu__content').click(function(){
+        return false;
     });
 }
 

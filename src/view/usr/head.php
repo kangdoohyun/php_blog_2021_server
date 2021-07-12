@@ -86,11 +86,23 @@ $boards = $this->boardService()->getBoardsByASC();
                                         <span class="ml-2 font-bold">MAKE BOARD</span>
                                     </a>
                                 </li>
-                                <?php foreach ($boards as $board) { ?>
                                 <li class="flex flex-grow items-center">
                                     <a class="h-10 flex items-center px-5 justify-center flex-grow"
-                                        href="/usr/article/list?boardId=<?= $board['id'] ?>">
-                                        <span><i class="fas fa-book"></i></span>
+                                        href="/usr/article/list">
+                                        <span><i class="fas fa-book-open"></i></span>
+                                        <span class="ml-2 font-bold">전체보기</span>
+                                    </a>
+                                </li>
+                                <?php foreach ($boards as $board) { ?>
+                                <li class="flex flex-grow items-center">
+                                    <a class="h-10 flex items-center px-5 justify-center flex-grow" href="/usr/article/list?boardId=<?= $board['id'] ?>">
+                                        <?php if($board['code'] === "java"){ ?>
+                                            <span><i class="fab fa-java"></i></span>
+                                        <?php } else if($board['code'] === "html/css"){  ?>
+                                            <span><i class="fab fa-html5"></i></span>
+                                        <?php } else {?>
+                                            <span><i class="fas fa-book"></i></span>
+                                        <?php }?>
                                         <span class="ml-2 font-bold"><?= $board['name'] ?></span>
                                     </a>
                                 </li>
@@ -133,33 +145,32 @@ $boards = $this->boardService()->getBoardsByASC();
             </div>
         </header>
 
-        <nav class="mobile-side-menu z-20">
+        <nav class="mobile-side-menu z-20 md:hidden">
             <div class="mobile-side-menu__bg fixed inset-0">
                 <div class="mobile-side-menu__content flex flex-col">
                     <div class="mobile-side-menu__head flex justify-end h-10 flex-shrink-0">
-                        <div class="mobile-side-menu__close-btn px-4 flex items-center text-navy">
+                        <div class="mobile-side-menu__close-btn px-4 flex items-center text-navy cursor-pointer">
                             <i class="fas fa-times"></i>
                         </div>
                     </div>
                     <div class="mobile-side-menu__body overflow-y-auto flex-gorw px-4">
                         <ul class="mobile-side-menu__link-box flex flex-grow border-b-8 border-gray-100 maple-font">
                             <li class="flex-grow">
-                                <a href="/usr/home/aboutMe" class="h-full flex items-center justify-center text-navy">
+                                <a onclick="location.href='/usr/home/aboutMe'" class="h-full flex items-center justify-center text-navy cursor-pointer">
                                     <span><i class="far fa-id-card"></i></span>
                                     <span class="ml-2 font-bold">ABOUT ME</span>
                                 </a>
                             </li>
                             <?php if ($isLogined) { ?>
                             <li class="flex-grow">
-                                <a href="/usr/member/doLogout"
-                                    class="h-full flex items-center justify-center text-navy">
+                                <a onclick="location.href='/usr/member/dologout'" class="h-full flex items-center justify-center text-navy cursor-pointer">
                                     <span><i class="fas fa-sign-out-alt"></i></span>
                                     <span class="ml-2 font-bold">LOGOUT</span>
                                 </a>
                             </li>
                             <?php } else { ?>
                             <li class="flex-grow">
-                                <a href="/usr/member/login" class="h-full flex items-center justify-center text-navy">
+                                <a onclick="location.href='/usr/member/login'" class="h-full flex items-center justify-center text-navy cursor-pointer">
                                     <span><i class="fas fa-sign-in-alt"></i></span>
                                     <span class="ml-2 font-bold">LOGIN</span>
                                 </a>
@@ -168,12 +179,11 @@ $boards = $this->boardService()->getBoardsByASC();
                         </ul>
                         <ul class="mobile-side-menu__board-box flex flex-col maple-font">
                             <li class="flex flex-grow items-center">
-                                <a class="block w-full p-3" href="/usr/article/list">전체보기</a>
+                                <a onclick="location.href='/usr/article/list'" class="block w-full p-3 cursor-pointer">전체보기</a>
                             </li>
                             <?php foreach ($boards as $board) { ?>
                             <li class="flex flex-grow items-center">
-                                <a class="block w-full p-3"
-                                    href="/usr/article/list?boardId=<?= $board['id'] ?>"><?= $board['name'] ?></a>
+                                <a onclick="location.href='/usr/article/list?boardId=<?= $board['id'] ?>'" class="block w-full p-3 cursor-pointer"><?= $board['name'] ?></a>
                             </li>
                             <?php } ?>
                         </ul>

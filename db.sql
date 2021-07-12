@@ -156,3 +156,4 @@ updateDate = NOW(),
 
 SELECT * FROM article;
 SELECT * FROM board;
+

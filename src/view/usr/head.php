@@ -76,6 +76,12 @@ $loginedMember = $_REQUEST['App__loginedMember'];
                             <span class="ml-2 font-bold hidden sm:inline">ABOUT ME</span>
                         </a>
                     </li>
+                    <li class="hover:bg-white">
+                        <a href="/usr/board/make" class="h-full flex items-center px-5">
+                            <span><i class="fas fa-book"></i></span>
+                            <span class="ml-2 font-bold hidden sm:inline">MAKE BOARD</span>
+                        </a>
+                    </li>
                     <?php if ($isLogined) { ?>
                         <li class="hover:bg-white">
                             <a href="/usr/member/doLogout" class="h-full flex items-center px-5">

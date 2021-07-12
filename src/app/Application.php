@@ -96,7 +96,7 @@ class Application
         } else {
             $actionMethodName .= "Show" . ucfirst($actionFuncName);
         }
-
+        
         $usrArticleController = new $controllerClassName();
         $usrArticleController->$actionMethodName();
     }

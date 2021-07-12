@@ -5,7 +5,7 @@ USE php_blog_2021;
 
 # 게시물 테이블 생성
 CREATE TABLE article (
-    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(10) UNSIGNED NOT NULL outline KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
     title CHAR(100) NOT NULL,
@@ -39,7 +39,7 @@ title = '제목4',
 
 # 회원 테이블 생성
 CREATE TABLE `member` (
-    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(10) UNSIGNED NOT NULL outline KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
     loginId CHAR(20) NOT NULL,

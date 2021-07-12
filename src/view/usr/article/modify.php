@@ -43,7 +43,7 @@ $pageTitle = "게시물 수정, ${id}번 게시물";
         <input type="hidden" name="id" value="<?=$article['id']?>">
         <input type="hidden" name="body">
         <div>
-          <div class="badge badge-primary badge-outline">게시물 번호</div>
+          <div class="badge badge-outline badge-outline">게시물 번호</div>
           <span class="label-text"><?=$article['id']?></span>
         </div>
         <div>
@@ -60,10 +60,10 @@ $pageTitle = "게시물 수정, ${id}번 게시물";
           <script type="text/x-template"><?=ToastUiEditor__getSafeSource($article['body'])?></script>
           <div class="toast-ui-editor input-body"></div>
         </div>
-        <div class="pt-4">
-          <input class="btn btn-outline" type="submit" value="글수정">
-          <a class="btn btn-outline" href="detail?id=<?=$id?>">뒤로가기</a>
-          <a class="btn btn-outline" href="list">글 리스트</a>
+        <div class="pt-4 w-80 flex">
+          <input class="btn btn-ghost flex-grow w-0" type="submit" value="글수정">
+          <a class="btn btn-ghost flex-grow w-0" href="detail?id=<?=$id?>">뒤로가기</a>
+          <a class="btn btn-ghost flex-grow w-0" href="list">글 리스트</a>
         </div>
       </form>
     </div>

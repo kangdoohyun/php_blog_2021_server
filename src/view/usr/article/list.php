@@ -8,8 +8,8 @@ $pageTitle = "최신 게시물 리스트";
 <?php if ( $isLogined ) { ?>
 
 <section class="section-article-menu">
-  <div class="container mx-auto">
-    <a href="write" class="btn btn-link">글 작성</a>
+  <div class="container mx-auto py-2">
+    <a href="write" class="btn btn-ghost">글 작성</a>
   </div>
 </section>
 <hr>
@@ -20,7 +20,7 @@ $pageTitle = "최신 게시물 리스트";
   <div class="container mx-auto">
     <div class="con-pad">
       <div>
-        <div class="badge badge-primary badge-outline">게시물 수</div>
+        <div class="badge badge-outline badge-outline">게시물 수</div>
         <?=$totalCount?>
       </div>
     </div>
@@ -34,23 +34,23 @@ $pageTitle = "최신 게시물 리스트";
             $body = ToastUiEditor__getSafeSource($article['body']);
             ?>
           <div>
-            <div class="badge badge-primary badge-outline">번호</div>
+            <div class="badge badge-outline">번호</div>
             <a href="<?=$detailUri?>"><?=$article['id']?></a>
           </div>
           <div class="mt-2">
-            <div class="badge badge-primary badge-outline">제목</div>
+            <div class="badge badge-outline">제목</div>
             <a href="<?=$detailUri?>"><?=$article['title']?></a>
           </div>
           <div class="mt-2">
-            <div class="badge badge-primary badge-outline">작성자</div>
+            <div class="badge badge-outline">작성자</div>
             <?=$article['extra__writerName']?>
           </div>
           <div class="mt-2">
-            <div class="badge badge-primary badge-outline">작성날짜</div>
+            <div class="badge badge-outline">작성날짜</div>
             <?=$article['regDate']?>
           </div>
           <div class="mt-2">
-            <div class="badge badge-primary badge-outline">수정날짜</div>
+            <div class="badge badge-outline">수정날짜</div>
             <?=$article['updateDate']?>
           </div>
           <div class="mt-2">

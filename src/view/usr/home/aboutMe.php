@@ -1,5 +1,5 @@
 <?php
-$pageTitleIcon = '<i class="fas fa-user"></i>';
+$pageTitleIcon = '<i class="far fa-id-card"></i>';
 $pageTitle = "내 정보";
 ?>
 

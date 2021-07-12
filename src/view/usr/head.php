@@ -30,6 +30,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.2/dist/full.css" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="/resource/common.css">
+    <script type="text/javascript" src="/resource/common.js" defer></script>
 
     <?php if ($envCode == 'prod') { ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -52,7 +53,7 @@ $loginedMember = $_REQUEST['App__loginedMember'];
 </head>
 <body>
 <div class="site-wrap min-h-screen flex flex-col pt-10">
-    <header class="top-bar fixed top-0 inset-x-0 bg-navy text-white h-10 z-10 maple-font">
+    <header class="top-bar fixed top-0 inset-x-0 bg-navy text-white h-10 z-10 maple-font hidden md:block">
         <div class="container mx-auto h-full flex">
             <a href="/" class="top-bar__logo px-5 flex items-center">
                 <span><i class="fas fa-desktop"></i></span>
@@ -94,6 +95,58 @@ $loginedMember = $_REQUEST['App__loginedMember'];
             </nav>
         </div>
     </header>
+
+    <header class="mobile-top-bar fixed top-0 inset-x-0 bg-navy text-white h-10 z-10 maple-font md:hidden">
+        <div class="container mx-auto h-full flex">
+            <div class="flex-grow w-0"></div>
+            <a href="/" class="top-bar__logo px-5 flex items-center">
+                <span><i class="fas fa-desktop"></i></span>
+                <span class="ml-2 font-bold">NCD BLOG</span>
+            </a>
+            <div class="flex-grow flex items-center h-full w-0">
+                <div class="mobile-top-bar__side-menu-open-btn ml-auto flex items-center h-full px-4 cursor-pointer">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="mobile-side-menu z-20">
+        <div class="mobile-side-menu__bg fixed inset-0">
+            <div class="mobile-side-menu__content flex flex-col">
+                <div class="mobile-side-menu__head flex justify-end h-10">
+                    <div class="mobile-side-menu__close-btn px-4 flex items-center text-navy">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="mobile-side-menu__body overflow-y-auto flex-gorw px-4">
+                    <ul class="mobile-side-menu__link-box flex flex-grow h-full border-b-8 border-gray-100">
+                        <li class="flex-grow">
+                            <a href="/usr/home/aboutMe" class="h-full flex items-center justify-center text-navy">
+                                <span><i class="far fa-id-card"></i></span>
+                                <span class="ml-2 font-bold">ABOUT ME</span>
+                            </a>
+                        </li>
+                        <?php if ($isLogined) { ?>
+                            <li class="flex-grow">
+                            <a href="/usr/member/doLogout" class="h-full flex items-center justify-center text-navy">
+                                    <span><i class="fas fa-sign-out-alt"></i></span>
+                                    <span class="ml-2 font-bold">LOGOUT</span>
+                                </a>
+                            </li>
+                        <?php } else { ?>
+                            <li class="flex-grow">
+                            <a href="/usr/member/login" class="h-full flex items-center justify-center text-navy">
+                                    <span><i class="fas fa-sign-in-alt"></i></span>
+                                    <span class="ml-2 font-bold">LOGIN</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <main class="flex-grow">
         <section class="section-title mt-5 text-2xl font-bold">

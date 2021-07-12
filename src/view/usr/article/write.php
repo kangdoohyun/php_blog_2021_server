@@ -48,7 +48,7 @@ $pageTitle = "게시물 작성";
         </div>
         <div>
             <label class="label">
-                <span class="label-text">제목</span>
+                <span class="label-text">내용</span>
             </label>
             <script type="text/x-template"></script>
             <div class="toast-ui-editor input-body"></div>

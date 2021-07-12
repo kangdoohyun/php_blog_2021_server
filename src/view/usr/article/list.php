@@ -28,7 +28,7 @@ $pageTitle = "최신 게시물 리스트";
     <div class="con-pad">
       <div>
         <?php foreach ( $articles as $article ) { ?>
-        <div class="py-5">
+        <div class="py-4">
           <?php
             $detailUri = "detail?id=${article['id']}";
             $body = ToastUiEditor__getSafeSource($article['body']);

@@ -57,3 +57,7 @@ html > body, html > body .tui-editor-contents {
 .top-bar__menu-box-1 > ul > li:hover{
   color: #000080;
 }
+
+.section-articles > div > div > div > div:last-of-type+hr{
+  display: none;
+}

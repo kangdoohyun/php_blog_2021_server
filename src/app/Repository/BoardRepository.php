@@ -16,4 +16,12 @@ class BoardRepository
         $sql->add(", `name` = ?", $name);
         DB__insert($sql);
     }
+
+    public function getBoardsByASC() : array{
+        $sql = DB__secSql();
+        $sql->add("SELECT * FROM board ORDER BY id ASC");
+        $boards = DB__getRows($sql);
+
+        return $boards;
+    }
 }

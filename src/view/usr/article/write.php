@@ -16,6 +16,15 @@ $pageTitle = "게시물 작성";
                         return;
                     }
 
+                    form.boardId.value = form.boardId.value.trim();
+
+                    if (form.boardId.value == 0) {
+                        alert('게시판을 선택해주세요.');
+                        form.boardId.focus();
+
+                        return;
+                    }
+
                     form.title.value = form.title.value.trim();
 
                     if (form.title.value.length == 0) {
@@ -62,7 +71,7 @@ $pageTitle = "게시물 작성";
                     <script type="text/x-template"></script>
                     <div class="toast-ui-editor input-body"></div>
                 </div>
-                <div class="py-4 w-80 flex">
+                <div class="py-2 w-full flex whitespace-nowrap md:w-80">
                     <input class="btn btn-ghost flex-grow w-0" type="submit" value="글작성">
                     <input class="btn btn-ghost flex-grow w-0" type="button" onclick="history.back()" value="작성 취소">
                 </div>

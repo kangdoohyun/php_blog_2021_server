@@ -11,6 +11,9 @@ function MobileSideBar_init(){
     $('.mobile-side-menu__link-box > li').click(function(){
         $(this).addClass('active');
     });
+    $('.mobile-side-menu__board-box > li').click(function(){
+        $(this).addClass('active');
+    })
 }
 
 $(function() {

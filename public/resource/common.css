@@ -54,10 +54,6 @@ html > body, html > body .tui-editor-contents {
   color: #000080;
 }
 
-.top-bar__menu-box-1 > ul > li:hover{
-  color: #000080;
-}
-
 .section-articles > div > div > div > div:last-of-type+hr{
   display: none;
 }
@@ -91,4 +87,35 @@ html > body, html > body .tui-editor-contents {
 }
 .mobile-side-menu__link-box > li.active > a{
   border-bottom: 2px solid #000080;
+}
+.mobile-side-menu__board-box > li{
+    color: #000080;
+    border-bottom: 2px solid #000080;
+}
+.mobile-side-menu__board-box > li.active{
+    color: #F3F4F6;
+    border-color: #F3F4F6;
+}
+/* PC탑바 메뉴박스 */
+
+.top-bar__menu-box-1 ul{
+    background-color: #000080;
+    color: white;
+    white-space: nowrap;
+}
+.top-bar__menu-box-1 ul > li{
+    position: relative;
+}
+.top-bar__menu-box-1 ul > li:hover{
+    color: #000080;
+    background-color: #F3F4F6;
+}
+.top-bar__menu-box-1 > ul ul{
+    display: none;
+    position: absolute;    
+    width: 100%;
+    top: 100%;
+}
+.top-bar__menu-box-1 ul > li:hover > ul{
+    display: block;
 }

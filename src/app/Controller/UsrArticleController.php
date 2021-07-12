@@ -10,7 +10,8 @@ class UsrArticleController extends Controller
     use Container;
 
     public function actionShowWrite()
-    {
+    {   
+        $boards = $this->boardService()->getBoardsByASC();
         require_once $this->getViewPath("usr/article/write");
     }
 
@@ -75,9 +76,14 @@ class UsrArticleController extends Controller
     }
 
     public function actionDoWrite()
-    {
+    {   
+        $boardId = getIntValueOr($_REQUEST['boardId'], 0);
         $title = getStrValueOr($_REQUEST['title'], "");
         $body = getStrValueOr($_REQUEST['body'], "");
+
+        if (!$boardId) {
+            jsHistoryBackExit("게시판을 선택해주세요.");
+        }
 
         if (!$title) {
             jsHistoryBackExit("제목을 입력해주세요.");
@@ -87,15 +93,17 @@ class UsrArticleController extends Controller
             jsHistoryBackExit("내용을 입력해주세요.");
         }
 
-        $id = $this->articleService()->writeArticle($_REQUEST['App__loginedMemberId'], $title, $body);
+        $id = $this->articleService()->writeArticle($_REQUEST['App__loginedMemberId'], $boardId, $title, $body);
 
         jsLocationReplaceExit("detail?id=${id}", "${id}번 게시물이 생성되었습니다.");
     }
 
     public function actionShowList()
     {
-        $articles = $this->articleService()->getForPrintArticles();
-        $totalCount = $this->articleService()->getTotalArticlesCount();
+        $boardId = getIntValueOr($_REQUEST['boardId'], 0);
+
+        $articles = $this->articleService()->getForPrintArticles($boardId);
+        $totalCount = $this->articleService()->getTotalArticlesCount($boardId);
 
         require_once $this->getViewPath("usr/article/list");
     }

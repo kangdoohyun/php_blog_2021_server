@@ -38,7 +38,7 @@ $pageTitle = "게시판 생성";
                     BoardDoMake__submitFormDone = true;
                 }
             </script>
-            <form action="doMake" method="GET" onsubmit="BoardDoMake__submitForm(this); return false;">
+            <form action="doMake" method="POST" onsubmit="BoardDoMake__submitForm(this); return false;">
                 <div>
                     <label class="label">
                         <span class="label-text">게시판 코드</span>
@@ -51,7 +51,7 @@ $pageTitle = "게시판 생성";
                     </label>
                     <input placeholder="게시판 이름을 입력해주세요." class="input input-bordered w-full" type="text" name="name">
                 </div>
-                <div class="py-4 w-80 flex">
+                <div class="py-2 w-full flex whitespace-nowrap md:w-80">
                     <input class="btn btn-ghost flex-grow w-0" type="submit" value="게시판 생성">
                     <input class="btn btn-ghost flex-grow w-0" type="button" onclick="history.back()" value="취소">
                 </div>

@@ -19,9 +19,9 @@ $utterancPageIdentifier = "/usr/article/detail?id={$article['id']}";
   <div class="container mx-auto">
     <div class="con-pad">
       <div>
-        <a href="list">리스트</a>
-        <a href="modify?id=<?=$article['id']?>">수정</a>
-        <a onclick="if ( confirm('정말 삭제 하시겠습니까?') == false ) return false;" href="doDelete?id=<?=$article['id']?>">삭제</a>
+        <a href="list" class="btn btn-link">리스트</a>
+        <a href="modify?id=<?=$article['id']?>" class="btn btn-link">수정</a>
+        <a onclick="if ( confirm('정말 삭제 하시겠습니까?') == false ) return false;" href="doDelete?id=<?=$article['id']?>" class="btn btn-link">삭제</a>
       </div>
       
       <hr>

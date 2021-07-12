@@ -53,8 +53,9 @@ $pageTitle = "게시물 작성";
             <script type="text/x-template"></script>
             <div class="toast-ui-editor input-body"></div>
         </div>
-        <div>
+        <div class="pt-4">
           <input class="btn btn-outline" type="submit" value="글작성">
+          <input class="btn btn-outline" type="button" onclick="history.back()" value="작성 취소">
         </div>
       </form>
     </div>

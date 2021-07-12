@@ -47,3 +47,13 @@ html > body, html > body .tui-editor-contents {
 .common-btn:hover{
     background-color: rgb(30, 58, 138);
 }
+.bg-navy{
+  background-color: #000080 ;
+}
+.text-navy{
+  color: #000080;
+}
+
+.top-bar__menu-box-1 > ul > li:hover{
+  color: #000080;
+}

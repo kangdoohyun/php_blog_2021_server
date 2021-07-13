@@ -51,8 +51,6 @@ $utterancPageIdentifier = "/usr/article/detail?id={$article['id']}";
                     <script type="text/x-template"><?=$body?></script>
                     <div class="toast-ui-viewer"></div>
                 </div>
-                <script type="text/x-template"><?=$body?></script>
-                <div class="toast-ui-viewer"></div>
             </div>
         </div>
     </div>

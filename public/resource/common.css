@@ -132,3 +132,7 @@ html > body, html > body .tui-editor-contents {
 .page-menu > .next{
     padding: .5rem;
 }
+/* 토스트 에디터 모바일에서 코드 튀어나오는거 스크롤처리 */
+.tui-editor-contents :not(table){
+    overflow: auto;
+}

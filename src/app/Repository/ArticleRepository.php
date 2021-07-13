@@ -42,9 +42,12 @@ class ArticleRepository
     public function getForPrintArticleById(int $id): array|null
     {
         $sql = DB__secSql();
-        $sql->add("SELECT *");
+        $sql->add("SELECT A.*");
+        $sql->add(", IFNULL(M.nickname, '삭제된사용자') AS extra__writerName");
         $sql->add("FROM article AS A");
-        $sql->add("WHERE id = ?", $id);
+        $sql->add("LEFT JOIN `member` AS M");
+        $sql->add("ON A.memberId = M.id");
+        $sql->add("WHERE A.id = ?", $id);
         return DB__getRow($sql);
     }
 

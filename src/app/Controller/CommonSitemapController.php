@@ -12,7 +12,7 @@ class CommonSitemapController extends Controller
     public function actionShowCurrent()
     {
         $prodSiteBaseUrl = $this->application()->getProdSiteBaseUrl();
-        $articles = $this->articleService()->getForPrintArticles();
+        $articles = $this->articleService()->getForPrintArticles(0);
         $sitemapItems = [];
 
         foreach ( $articles as $article ) {

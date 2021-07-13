@@ -15,9 +15,9 @@ class ArticleService
         return $this->articleRepository()->getTotalArticlesCount($boardId);
     }
 
-    public function getForPrintArticles(int $boardId): array
+    public function getForPrintArticles(int $boardId, int $limitFrom, int $limitTake): array
     {
-        return $this->articleRepository()->getForPrintArticles($boardId);
+        return $this->articleRepository()->getForPrintArticles($boardId, $limitFrom, $limitTake);
     }
 
     public function getForPrintArticleById(int $id): array|null

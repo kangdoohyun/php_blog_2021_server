@@ -100,10 +100,24 @@ class UsrArticleController extends Controller
 
     public function actionShowList()
     {
+        $page = getIntValueOr($_REQUEST['page'], 1);
+        $itemsInAPage = 3;
+        $limitFrom = ($page - 1) * $itemsInAPage;
+		$limitTake = $itemsInAPage;
+
         $boardId = getIntValueOr($_REQUEST['boardId'], 0);
 
-        $articles = $this->articleService()->getForPrintArticles($boardId);
+        
         $totalCount = $this->articleService()->getTotalArticlesCount($boardId);
+
+        $blockCnt = 5;
+        $blockNum = floor(($page - 1) / $blockCnt) + 1;
+        $blockStartNum = ($blockCnt * ($blockNum - 1)) + 1;
+        $blockLastNum = $blockStartNum + ($blockCnt - 1);
+        $totalPage = ceil($totalCount / $itemsInAPage);
+        $endBlock = ceil($totalPage / $blockCnt);
+
+        $articles = $this->articleService()->getForPrintArticles($boardId, $limitFrom, $limitTake);
 
         require_once $this->getViewPath("usr/article/list");
     }

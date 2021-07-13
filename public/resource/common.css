@@ -125,3 +125,10 @@ html > body, html > body .tui-editor-contents {
 .top-bar__menu-box-1 ul > li:hover > ul{
     display: block;
 }
+/* 페이지네이션 */
+.page-menu > .prev{
+    padding: .5rem;
+}
+.page-menu > .next{
+    padding: .5rem;
+}

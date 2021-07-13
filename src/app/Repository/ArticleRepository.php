@@ -18,7 +18,7 @@ class ArticleRepository
         return DB__getRowIntValue($sql, 0);
     }
 
-    public function getForPrintArticles(int $boardId): array
+    public function getForPrintArticles(int $boardId, int $limitFrom, int $limitTake): array
     {
         $sql = DB__secSql();
         $sql->add("SELECT A.*");
@@ -33,6 +33,9 @@ class ArticleRepository
             $sql->add("WHERE B.id = ?", $boardId);
         }
         $sql->add("ORDER BY A.id DESC");
+        $sql->add("LIMIT ?", $limitTake);
+        $sql->add("OFFSET ?", $limitFrom);
+
         return DB__getRows($sql);
     }
 

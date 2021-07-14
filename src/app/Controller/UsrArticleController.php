@@ -104,9 +104,7 @@ class UsrArticleController extends Controller
         $searchKeyword = getStrValueOr($_REQUEST['searchKeyword'], "");
         $searchKeywordTypeCode = getStrValueOr($_REQUEST['searchKeywordTypeCode'], "");
         $itemsInAPage = 3;
-        $limitFrom = ($page - 1) * $itemsInAPage;
-		$limitTake = $itemsInAPage;
-
+        
         $boardId = getIntValueOr($_REQUEST['boardId'], 0);
 
         
@@ -119,7 +117,7 @@ class UsrArticleController extends Controller
         $totalPage = ceil($totalCount / $itemsInAPage);
         $endBlock = ceil($totalPage / $blockCnt);
 
-        $articles = $this->articleService()->getForPrintArticles($boardId, $searchKeyword, $searchKeywordTypeCode, $limitFrom, $limitTake);
+        $articles = $this->articleService()->getForPrintArticles($boardId, $searchKeyword, $searchKeywordTypeCode, $page, $itemsInAPage);
 
         require_once $this->getViewPath("usr/article/list");
     }

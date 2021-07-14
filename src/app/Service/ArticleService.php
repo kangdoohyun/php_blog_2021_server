@@ -15,8 +15,10 @@ class ArticleService
         return $this->articleRepository()->getTotalArticlesCount($boardId, $searchKeyword, $searchKeywordTypeCode);
     }
 
-    public function getForPrintArticles(int $boardId, string $searchKeyword, string $searchKeywordTypeCode, int $limitFrom, int $limitTake): array
-    {
+    public function getForPrintArticles(int $boardId, string $searchKeyword, string $searchKeywordTypeCode, int $page, int $itemsInAPage): array
+    {   
+        $limitFrom = ($page - 1) * $itemsInAPage;
+		$limitTake = $itemsInAPage;
         return $this->articleRepository()->getForPrintArticles($boardId, $searchKeyword, $searchKeywordTypeCode, $limitFrom, $limitTake);
     }
 

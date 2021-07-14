@@ -1,15 +1,32 @@
 <?php
 $pageTitleIcon = '<i class="fas fa-list"></i>';
 $pageTitle = "최신 게시물 리스트";
+$bId = $boardId != 0 ? $boardId : 0
 ?>
+
 <?php require_once __DIR__ . "/../head.php"; ?>
 <?php require_once __DIR__ . "/../../part/toastUiSetup.php"; ?>
 
 <?php if ( $isLogined ) { ?>
 
 <section class="section-article-menu">
-    <div class="container mx-auto py-2">
-        <a href="write" class="btn btn-ghost">글 작성</a>
+    <div class="container mx-auto py-2 flex px-4">
+        <a href="write" class="write-btn btn btn-ghost btn-sm">글 작성</a>
+        <div class="flex-grow"></div>
+        <div class="mobile-search-box-btn md:hidden">
+            <button type="button" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+        </div>
+        <form class="whitespace-nowrap hidden md:block" action="./list">
+            <input type="hidden" name="page" value="1">
+            <input type="hidden" name="boardId" value="<?=$bId?>">
+            <select class="select select-bordered select-sm" name="searchKeywordTypeCode">
+                <option value="title" selected="selected">제목</option> 
+                <option value="body">내용</option> 
+                <option value="title,body">제목, 내용</option>
+            </select> 
+            <input name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." class="input input-sm input-bordered">
+            <button type="submit" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+        </form>
     </div>
 </section>
 <hr>
@@ -30,9 +47,9 @@ $pageTitle = "최신 게시물 리스트";
                 <?php foreach ( $articles as $article ) { ?>
                 <div class="py-4">
                     <?php
-            $detailUri = "detail?id=${article['id']}";
-            $body = ToastUiEditor__getSafeSource($article['body']);
-            ?>
+                    $detailUri = "detail?id=${article['id']}";
+                    $body = ToastUiEditor__getSafeSource($article['body']);
+                    ?>
                     <div>
                         <div class="badge badge-outline">번호</div>
                         <a href="<?=$detailUri?>"><?=$article['id']?></a>
@@ -63,7 +80,7 @@ $pageTitle = "최신 게시물 리스트";
             </div>
         </div>
         <div class="page-menu flex items-center justify-center maple-font">
-        <?php $bId = $boardId != 0 ? $boardId : 0?>
+        
         <?php if($blockStartNum == 1){ ?>
             <span class="prev text-gray-400"><i class="fas fa-chevron-left"></i></span>
         <?php } ?>

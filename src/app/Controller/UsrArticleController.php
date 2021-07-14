@@ -101,6 +101,8 @@ class UsrArticleController extends Controller
     public function actionShowList()
     {
         $page = getIntValueOr($_REQUEST['page'], 1);
+        $searchKeyword = getStrValueOr($_REQUEST['searchKeyword'], "");
+        $searchKeywordTypeCode = getStrValueOr($_REQUEST['searchKeywordTypeCode'], "");
         $itemsInAPage = 3;
         $limitFrom = ($page - 1) * $itemsInAPage;
 		$limitTake = $itemsInAPage;
@@ -108,7 +110,7 @@ class UsrArticleController extends Controller
         $boardId = getIntValueOr($_REQUEST['boardId'], 0);
 
         
-        $totalCount = $this->articleService()->getTotalArticlesCount($boardId);
+        $totalCount = $this->articleService()->getTotalArticlesCount($boardId, $searchKeyword, $searchKeywordTypeCode);
 
         $blockCnt = 5;
         $blockNum = floor(($page - 1) / $blockCnt) + 1;
@@ -117,7 +119,7 @@ class UsrArticleController extends Controller
         $totalPage = ceil($totalCount / $itemsInAPage);
         $endBlock = ceil($totalPage / $blockCnt);
 
-        $articles = $this->articleService()->getForPrintArticles($boardId, $limitFrom, $limitTake);
+        $articles = $this->articleService()->getForPrintArticles($boardId, $searchKeyword, $searchKeywordTypeCode, $limitFrom, $limitTake);
 
         require_once $this->getViewPath("usr/article/list");
     }

@@ -21,7 +21,16 @@ function MobileSideBar_init(){
     })
 }
 
+function MobileSearchBox_init(){
+    $('.mobile-search-box-btn').click(function(){
+        $('.mobile-search-box-btn+form').addClass('active');
+        $(this).addClass('active');
+        $('.write-btn').addClass('active');
+    });
+}
+
 $(function() {
     MobileSideBarBtn_init(); 
     MobileSideBar_init();
+    MobileSearchBox_init();
 });

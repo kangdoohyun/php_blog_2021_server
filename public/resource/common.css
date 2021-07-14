@@ -136,3 +136,14 @@ html > body, html > body .tui-editor-contents {
 .tui-editor-contents :not(table){
     overflow: auto;
 }
+/* 모바일 서치박스 버튼 */
+.mobile-search-box-btn.active,
+.write-btn.active{
+    opacity: 0;
+}
+.mobile-search-box-btn+form.active{
+    display: block;
+    position: absolute;
+    width: calc(100% - 32px);
+    overflow: auto;
+}

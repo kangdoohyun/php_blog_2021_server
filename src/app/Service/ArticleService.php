@@ -10,14 +10,14 @@ class ArticleService
 {
     use Container;
 
-    public function getTotalArticlesCount(int $boardId): int
+    public function getTotalArticlesCount(int $boardId, string $searchKeyword, string $searchKeywordTypeCode): int
     {
-        return $this->articleRepository()->getTotalArticlesCount($boardId);
+        return $this->articleRepository()->getTotalArticlesCount($boardId, $searchKeyword, $searchKeywordTypeCode);
     }
 
-    public function getForPrintArticles(int $boardId, int $limitFrom, int $limitTake): array
+    public function getForPrintArticles(int $boardId, string $searchKeyword, string $searchKeywordTypeCode, int $limitFrom, int $limitTake): array
     {
-        return $this->articleRepository()->getForPrintArticles($boardId, $limitFrom, $limitTake);
+        return $this->articleRepository()->getForPrintArticles($boardId, $searchKeyword, $searchKeywordTypeCode, $limitFrom, $limitTake);
     }
 
     public function getForPrintArticleById(int $id): array|null

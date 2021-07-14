@@ -4,21 +4,35 @@ namespace App\Repository;
 
 class ArticleRepository
 {
-    public function getTotalArticlesCount(int $boardId): int
+    public function getTotalArticlesCount(int $boardId, string $searchKeyword, string $searchKeywordTypeCode): int
     {
         $sql = DB__secSql();
         $sql->add("SELECT COUNT(*) AS cnt");
         $sql->add("FROM article AS A");
         $sql->add("LEFT JOIN board AS B");
         $sql->add("ON A.boardId = B.id");
+        $sql->add("WHERE 1");
         if($boardId != 0){
-            $sql->add("WHERE B.id = ?", $boardId);
+            $sql->add("AND B.id = ?", $boardId);
+        }
+        if(strlen($searchKeyword) != 0){
+            switch($searchKeywordTypeCode){
+            case "title":
+                $sql->add("AND A.title LIKE CONCAT('%', ?, '%')", $searchKeyword);
+                break;
+            case "body":
+                $sql->add("AND A.body LIKE CONCAT('%', ?, '%')", $searchKeyword);
+                break;
+            case "title,body":
+                $sql->add("AND A.title LIKE CONCAT('%', ?, '%')", $searchKeyword);
+                break;
+            }
         }
         
         return DB__getRowIntValue($sql, 0);
     }
 
-    public function getForPrintArticles(int $boardId, int $limitFrom, int $limitTake): array
+    public function getForPrintArticles(int $boardId, string $searchKeyword, string $searchKeywordTypeCode, int $limitFrom, int $limitTake): array
     {
         $sql = DB__secSql();
         $sql->add("SELECT A.*");
@@ -29,13 +43,27 @@ class ArticleRepository
         $sql->add("ON A.memberId = M.id");
         $sql->add("LEFT JOIN board AS B");
         $sql->add("ON A.boardId = B.id");
+        $sql->add("WHERE 1");
         if($boardId != 0){
-            $sql->add("WHERE B.id = ?", $boardId);
+            $sql->add("AND B.id = ?", $boardId);
+        }
+        if(strlen($searchKeyword) != 0){
+            switch($searchKeywordTypeCode){
+            case "title":
+                $sql->add("AND A.title LIKE CONCAT('%', ?, '%')", $searchKeyword);
+                break;
+            case "body":
+                $sql->add("AND A.body LIKE CONCAT('%', ?, '%')", $searchKeyword);
+                break;
+            case "title,body":
+                $sql->add("AND A.title LIKE CONCAT('%', ?, '%')", $searchKeyword);
+                break;
+            }
         }
         $sql->add("ORDER BY A.id DESC");
         $sql->add("LIMIT ?", $limitTake);
         $sql->add("OFFSET ?", $limitFrom);
-
+        
         return DB__getRows($sql);
     }
 

@@ -6,32 +6,33 @@ $bId = $boardId != 0 ? $boardId : 0
 
 <?php require_once __DIR__ . "/../head.php"; ?>
 <?php require_once __DIR__ . "/../../part/toastUiSetup.php"; ?>
-
-<?php if ( $isLogined ) { ?>
-
 <section class="section-article-menu">
-    <div class="container mx-auto py-2 flex px-4">
-        <a href="write" class="write-btn btn btn-ghost btn-sm">글 작성</a>
-        <div class="flex-grow"></div>
-        <div class="mobile-search-box-btn md:hidden">
-            <button type="button" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+    <div class="container mx-auto py-2 flex px-4 relative">
+    <?php if ( $isLogined ) { ?>
+        <div>
+            <a href="write" class="write-btn btn btn-ghost btn-sm">글 작성</a>
         </div>
-        <form class="whitespace-nowrap hidden md:block" action="./list">
-            <input type="hidden" name="page" value="1">
-            <input type="hidden" name="boardId" value="<?=$bId?>">
-            <select class="select select-bordered select-sm" name="searchKeywordTypeCode">
-                <option value="title" selected="selected">제목</option> 
-                <option value="body">내용</option> 
-                <option value="title,body">제목, 내용</option>
-            </select> 
-            <input name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." class="input input-sm input-bordered">
-            <button type="submit" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
-        </form>
+        <div class="flex-grow"></div>
+    <?php } ?>
+        <div class="mobile-search-box ml-auto">
+            <div class="mobile-search-box-btn md:hidden">
+                <button type="button" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+            </div>
+            <form class="whitespace-nowrap hidden md:block" action="./list">
+                <input type="hidden" name="page" value="1">
+                <input type="hidden" name="boardId" value="<?=$bId?>">
+                <select class="select select-bordered select-sm" name="searchKeywordTypeCode">
+                    <option value="title" selected="selected">제목</option> 
+                    <option value="body">내용</option> 
+                    <option value="title,body">제목, 내용</option>
+                </select> 
+                <input name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." class="input input-sm input-bordered">
+                <button type="submit" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+            </form>
+        </div>
     </div>
 </section>
 <hr>
-
-<?php } ?>
 
 <section class="section-articles mt-4">
     <div class="container mx-auto">

@@ -137,13 +137,18 @@ html > body, html > body .tui-editor-contents {
     overflow: auto;
 }
 /* 모바일 서치박스 버튼 */
-.mobile-search-box-btn.active,
-.write-btn.active{
-    opacity: 0;
-}
-.mobile-search-box-btn+form.active{
-    display: block;
-    position: absolute;
-    width: calc(100% - 32px);
-    overflow: auto;
+
+@media (max-width: 767px) {
+    .mobile-search-box-btn.active,
+    .write-btn.active{
+        opacity: 0;
+    }
+    .mobile-search-box-btn+form.active{
+        display: block;
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        width: calc(100% - 32px);
+        overflow: auto;
+    }    
 }

@@ -1,7 +1,6 @@
 <?php
 $pageTitleIcon = '<i class="fas fa-list"></i>';
 $pageTitle = "최신 게시물 리스트";
-$bId = $boardId != 0 ? $boardId : 0
 ?>
 
 <?php require_once __DIR__ . "/../head.php"; ?>
@@ -18,9 +17,14 @@ $bId = $boardId != 0 ? $boardId : 0
             <div class="mobile-search-box-btn md:hidden">
                 <button type="button" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
             </div>
+            <script>
+                $( document ).ready(function() {
+                    $("select[name='searchKeywordTypeCode']").val((("<?=$searchKeywordTypeCode?>" == '') ? "" : "<?=$searchKeywordTypeCode ?>")).prop("selected", true);
+                });
+            </script>
             <form class="whitespace-nowrap hidden md:block" action="./list">
                 <input type="hidden" name="page" value="1">
-                <input type="hidden" name="boardId" value="<?=$bId?>">
+                <input type="hidden" name="boardId" value="<?=$boardId?>">
                 <select class="select select-bordered select-sm" name="searchKeywordTypeCode">
                     <option value="title" selected="selected">제목</option> 
                     <option value="body">내용</option> 
@@ -86,19 +90,19 @@ $bId = $boardId != 0 ? $boardId : 0
             <span class="prev text-gray-400"><i class="fas fa-chevron-left"></i></span>
         <?php } ?>
         <?php if($blockStartNum != 1){ ?>
-            <a class="prev" href="./list?page=<?=$blockStartNum - 1?>&boardId=<?=$bId?>"><i class="fas fa-chevron-left"></i></a>
+            <a class="prev" href="./list?page=<?=$blockStartNum - 1?>&boardId=<?=$boardId?>"><i class="fas fa-chevron-left"></i></a>
         <?php } ?>
         <?php for($i = $blockStartNum; $i <= $blockLastNum; $i++) { ?>
             <?php if($i <= $totalPage) { ?> 
                 <?php $classStr = $i == $page ? 'text-navy' : ''?>
-                <a class="page-menu__list p-2 text-gray-400 <?=$classStr?>" href="./list?page=<?=$i?>&boardId=<?=$bId?>"><?=$i?></a>
+                <a class="page-menu__list p-2 text-gray-400 <?=$classStr?>" href="./list?page=<?=$i?>&boardId=<?=$boardId?>"><?=$i?></a>
             <?php } ?>
         <?php } ?>
         <?php if($endBlock <= $blockNum) { ?>
             <span class="next text-gray-400"><i class="fas fa-chevron-right"></i></span>
         <?php } ?>
         <?php if($endBlock > $blockNum) { ?>
-            <a class="next" href="./list?page=<?=$blockLastNum + 1?>&boardId=<?=$bId?>"><i class="fas fa-chevron-right"></i></a>
+            <a class="next" href="./list?page=<?=$blockLastNum + 1?>&boardId=<?=$boardId?>"><i class="fas fa-chevron-right"></i></a>
         <?php } ?>
         </div>
     </div>

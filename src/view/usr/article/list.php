@@ -17,11 +17,6 @@ $pageTitle = "최신 게시물 리스트";
             <div class="mobile-search-box-btn md:hidden">
                 <button type="button" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
             </div>
-            <script>
-                $( document ).ready(function() {
-                    $("select[name='searchKeywordTypeCode']").val((("<?=$searchKeywordTypeCode?>" == '') ? "" : "<?=$searchKeywordTypeCode ?>")).prop("selected", true);
-                });
-            </script>
             <form class="whitespace-nowrap hidden md:block" action="./list">
                 <input type="hidden" name="page" value="1">
                 <input type="hidden" name="boardId" value="<?=$boardId?>">
@@ -30,6 +25,11 @@ $pageTitle = "최신 게시물 리스트";
                     <option value="body">내용</option> 
                     <option value="title,body">제목, 내용</option>
                 </select> 
+                <?php if($searchKeywordTypeCode != null){ ?>
+                    <script>
+                    $("select[name='searchKeywordTypeCode']").val('<?=$searchKeywordTypeCode?>');
+                    </script>
+                <?php } ?>
                 <input name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." class="input input-sm input-bordered">
                 <button type="submit" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
             </form>

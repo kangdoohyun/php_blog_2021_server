@@ -102,7 +102,7 @@ class UsrArticleController extends Controller
     {
         $page = getIntValueOr($_REQUEST['page'], 1);
         $searchKeyword = getStrValueOr($_REQUEST['searchKeyword'], "");
-        $searchKeywordTypeCode = getStrValueOr($_REQUEST['searchKeywordTypeCode'], "");
+        $searchKeywordTypeCode = getStrValueOr($_REQUEST['searchKeywordTypeCode'], "title");
         $itemsInAPage = 3;
         
         $boardId = getIntValueOr($_REQUEST['boardId'], 0);

@@ -13,11 +13,8 @@ $pageTitle = "최신 게시물 리스트";
         </div>
         <div class="flex-grow"></div>
     <?php } ?>
-        <div class="mobile-search-box ml-auto">
-            <div class="mobile-search-box-btn md:hidden">
-                <button type="button" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
-            </div>
-            <form class="whitespace-nowrap hidden md:block" action="./list">
+        <div class="search-box ml-auto hidden md:block">
+            <form class="whitespace-nowrap" action="./list">
                 <input type="hidden" name="page" value="1">
                 <input type="hidden" name="boardId" value="<?=$boardId?>">
                 <select class="select select-bordered select-sm" name="searchKeywordTypeCode">
@@ -31,8 +28,31 @@ $pageTitle = "최신 게시물 리스트";
                     </script>
                 <?php } ?>
                 <input name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." class="input input-sm input-bordered">
-                <button type="submit" class="btn btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+                <button type="submit" class="btn btn-square btn-ghost btn-sm"><i class='fas fa-search'></i></button>
             </form>
+        </div>
+        <div class="mobile-search-box__bg inset-0 fixed"></div>
+        <div class="mobile-search-box ml-auto md:hidden">
+            <form class="whitespace-nowrap" action="./list">
+                <input type="hidden" name="page" value="1">
+                <input type="hidden" name="boardId" value="<?=$boardId?>">
+                <select class="select select-bordered select-sm" name="searchKeywordTypeCode">
+                    <option value="title" selected="selected">제목</option> 
+                    <option value="body">내용</option> 
+                    <option value="title,body">제목, 내용</option>
+                </select> 
+                <?php if($searchKeywordTypeCode != null){ ?>
+                    <script>
+                    $("select[name='searchKeywordTypeCode']").val('<?=$searchKeywordTypeCode?>');
+                    </script>
+                <?php } ?>
+                <button type="button" class="open-searchKeyword-input-bar btn btn-square btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+                <div class="searchKeyword-input-bar pt-2">
+                    <input name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." class="input input-sm input-bordered">
+                    <button type="submit" class="btn btn-square btn-ghost btn-sm"><i class='fas fa-search'></i></button>
+                </div>
+            </form>
+            
         </div>
     </div>
 </section>

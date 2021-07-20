@@ -22,10 +22,19 @@ function MobileSideBar_init(){
 }
 
 function MobileSearchBox_init(){
-    $('.mobile-search-box-btn').click(function(){
-        $('.mobile-search-box-btn+form').addClass('active');
-        $(this).addClass('active');
-        $('.write-btn').addClass('active');
+    $('.open-searchKeyword-input-bar').click(function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $('.mobile-search-box__bg').removeClass('active');
+        }
+        else{
+            $(this).addClass('active');
+            $('.mobile-search-box__bg').addClass('active');
+        }
+    });
+    $('.mobile-search-box__bg').click(function(){
+        $(this).removeClass('active');
+        $('.open-searchKeyword-input-bar').removeClass('active');
     });
 }
 

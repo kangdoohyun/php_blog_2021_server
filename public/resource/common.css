@@ -140,6 +140,13 @@ html > body, html > body .tui-editor-contents {
   overflow: auto;
 }
 /* 모바일 서치박스 버튼 */
+.mobile-search-box__bg {
+  visibility: hidden;
+}
+
+.mobile-search-box__bg.active{
+  visibility: visible;
+}
 
 @media (max-width: 767px) {
   .mobile-search-box {
@@ -161,13 +168,5 @@ html > body, html > body .tui-editor-contents {
   .open-searchKeyword-input-bar.active+.searchKeyword-input-bar {
     visibility: visible;
     opacity: 1;
-  }
-
-  .mobile-search-box__bg {
-    visibility: hidden;
-  }
-
-  .mobile-search-box__bg.active{
-    visibility: visible;
   }
 }

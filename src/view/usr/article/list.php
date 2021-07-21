@@ -31,7 +31,7 @@ $pageTitle = "최신 게시물 리스트";
                 <button type="submit" class="btn btn-square btn-ghost btn-sm"><i class='fas fa-search'></i></button>
             </form>
         </div>
-        <div class="mobile-search-box__bg inset-0 fixed hidden md:block"></div>
+        <div class="mobile-search-box__bg inset-0 fixed"></div>
         <div class="mobile-search-box ml-auto md:hidden">
             <form class="whitespace-nowrap" action="./list">
                 <input type="hidden" name="page" value="1">
